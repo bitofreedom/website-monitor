@@ -1,4 +1,3 @@
-# filepath: /website-monitor/src/website_monitor.py
 import requests
 import time
 from twilio.rest import Client

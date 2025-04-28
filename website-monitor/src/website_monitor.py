@@ -1,18 +1,22 @@
+import os
+from dotenv import load_dotenv
 import requests
 import time
 from twilio.rest import Client
 from datetime import datetime
+# Load environment variables from .env file
+load_dotenv()
 
 # Configuration
-WEBSITE_URL = "https://example.com"  # Replace with your website URL
-CHECK_INTERVAL = 300  # 5 minutes in seconds
+WEBSITE_URL = os.getenv("WEBSITE_URL")
+CHECK_INTERVAL = 15  # 15 seconds
 TIMEOUT = 10  # Timeout for the request in seconds
 
-# Twilio SMS Configuration (replace with your credentials)
-TWILIO_ACCOUNT_SID = "your_account_sid"
-TWILIO_AUTH_TOKEN = "your_auth_token"
-TWILIO_PHONE_NUMBER = "+1234567890"  # Your Twilio phone number
-ADMIN_PHONE_NUMBER = "+1234567890"   # Admin phone number to receive alerts
+# Twilio SMS Configuration
+TWILIO_ACCOUNT_SID = os.getenv("TWILIO_ACCOUNT_SID")
+TWILIO_AUTH_TOKEN = os.getenv("TWILIO_AUTH_TOKEN")
+TWILIO_PHONE_NUMBER = os.getenv("TWILIO_PHONE_NUMBER")
+ADMIN_PHONE_NUMBER = os.getenv("ADMIN_PHONE_NUMBER")
 
 # Status tracking
 last_status = None
